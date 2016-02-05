@@ -24,7 +24,7 @@ build:
 
   ci:
     - ps -eax
-    - ls -al
+    - ls -al uo
 
   post_ci:
     - docker push shippabledocker/hitchcock3_sample_node
@@ -36,3 +36,9 @@ integrations:
       branches:
         only:
           - master
+  notifications:
+    - integrationName: email
+      type: email
+      on_success: never
+      on_failure: never 
+      on_pull_request: never    
