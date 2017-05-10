@@ -23,8 +23,8 @@ build:
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
-    - ps -eax
-    - ls -al uo
+    - node --version
+   
 
   post_ci:
     - docker build -t=742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node .
