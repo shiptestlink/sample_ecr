@@ -27,18 +27,16 @@ build:
     - ls -al uo
 
   post_ci:
-    - docker push shippabledocker/hitchcock3_sample_node
+    - docker build -t=742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node .
+    - docker push 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node
+    - docker build -t=742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node1 .
+    - docker push 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node1
 
 integrations:
   hub:
-    - integrationName: ship-docker
+    - integrationName: ship-ecr
+      type: ecr
+      region: us-west-2
+    - integrationName: shippabledocker
       type: docker
-      branches:
-        only:
-          - master
-  notifications:
-    - integrationName: email
-      type: email
-      on_success: never
-      on_failure: never 
-      on_pull_request: never    
+    
